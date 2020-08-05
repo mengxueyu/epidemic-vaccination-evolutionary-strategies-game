@@ -1,0 +1,20 @@
+%第一步：求解临界值，R0等于1时对应的x
+clc
+clear all;
+
+syms x
+b=0.05;
+beta=0.15;
+yipsilo=0.5;
+alpha=0.002;
+miu=0.1;
+N=100;
+gama=1.8;
+e=0.75;
+
+k=N*(2-gama)/(3-gama);
+
+y=((k*b*beta*yipsilo*(1-e*x))/((b+yipsilo)*(b+e*x)*(alpha+b+miu)))-1.0;
+y=vpa(y,4)
+xjie=solve(y);
+xjie=vpa(xjie,4)
