@@ -1,0 +1,55 @@
+%R0绘图
+clc
+clear all;
+syms x e b
+%b=2.871*10^(-5);
+b=0.01;
+beta=2.1011*10^(-8);
+yipsilo=1/7;
+alpha=1.7826*10^(-5);
+miu=0.33029;
+%miu=0.13978;
+N=1.4*10^(9);
+gama=1.8;
+
+k0=N*(2-gama)/(3-gama);
+
+e=0.9; 
+f1=[];
+for i=0:0.02:1
+    zhi1=(k0*b*beta*yipsilo*(1-e*i)./((b+yipsilo)*(b+e*i)*(alpha+b+miu))).^(1/2);
+    f1=[f1;zhi1];
+end
+
+e=0.7; 
+f2=[];
+for i=0:0.02:1
+    zhi2=(k0*b*beta*yipsilo*(1-e*i)./((b+yipsilo)*(b+e*i)*(alpha+b+miu))).^(1/2);
+    f2=[f2;zhi2];
+end
+
+e=0.5; 
+f3=[];
+for i=0:0.02:1
+    zhi3=(k0*b*beta*yipsilo*(1-e*i)./((b+yipsilo)*(b+e*i)*(alpha+b+miu))).^(1/2);
+    f3=[f3;zhi3];
+end
+
+e=0.3; 
+f4=[];
+for i=0:0.02:1
+    zhi4=(k0*b*beta*yipsilo*(1-e*i)./((b+yipsilo)*(b+e*i)*(alpha+b+miu))).^(1/2);
+    f4=[f4;zhi4];
+end
+
+figure
+x=0:0.02:1;
+plot(x,f1,'-r',x,f2,'-g',x,f3,'-b',x,f4,'-','linewidth',2)
+hold on
+biaozhun=ones(1,51);
+plot(x,biaozhun,'--k','linewidth',1)
+
+xlabel('\it x','fontname','Times New Roman')
+ylabel('\it R_0','fontname','Times New Roman')
+legend('\it e=0.9','\it e=0.7','\it e=0.5','\it e=0.3')
+set(gca,'fontname','Times New Roman')
