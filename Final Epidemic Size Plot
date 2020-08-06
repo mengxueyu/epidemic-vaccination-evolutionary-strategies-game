@@ -1,0 +1,178 @@
+%f绘图
+clc
+clear all;
+
+syms x e b
+b=0.05;
+%b=0.01;
+beta=0.15;
+yipsilo=0.5;
+alpha=0.002;
+miu=0.1;
+%miu=0.13978;
+N=100;
+gama=1.8;
+e=0.75;
+
+k=N*(2-gama)/(3-gama);
+
+x110=0.5322:0.002:1;
+x11=ceil(0.5322/0.002)+(x110-0.5322+0.002)./0.002;
+x120=0:0.002:0.5322;
+x12=(x120+0.002)./0.002;
+
+f1=[];
+for x=0:0.002:1
+    zhi=e*x./((b+x*e))-e*x*(1-b./((b+x*e)));
+    %zhi=e*x*(1-b./((b+x*e)));
+    f1=[f1;zhi];
+end
+f1=f1';
+
+f11=f1(ceil(x11));
+f12=f1(ceil(x12));
+
+x210=0:0.002:0.5322;
+x21=(x210+0.002)./0.002;
+x220=0.5322:0.002:1;
+x22=ceil(0.5322/0.002)+(x220-0.5322)./0.002;
+
+f2=[];
+for x=0:0.002:1
+    R00=-(b^4*e*x - b*miu^2*yipsilo^2 - b^2*miu*yipsilo^2 - b^2*miu^2*yipsilo - b^3*miu*yipsilo + 2*alpha*b^3*e*x - alpha*b*miu*yipsilo^2 - alpha*b^2*miu*yipsilo + 2*b^3*e*miu*x + 2*b^3*e*x*yipsilo + alpha^2*b^2*e*x + b^2*e*miu^2*x + alpha^2*e*x*yipsilo^2 + b^2*e*x*yipsilo^2 + 2*alpha*b^2*e*miu*x + b*beta*k*miu*yipsilo^2 + 2*alpha*b*e*x*yipsilo^2 + 4*alpha*b^2*e*x*yipsilo + 2*alpha^2*b*e*x*yipsilo + alpha*e*miu*x*yipsilo^2 + b*e*miu*x*yipsilo^2 + b*e*miu^2*x*yipsilo + 3*b^2*e*miu*x*yipsilo + 3*alpha*b*e*miu*x*yipsilo - b*beta*e*k*miu*x*yipsilo^2)/(b*beta*k*yipsilo*(b + yipsilo)*(e*x - 1)*(alpha + b + miu))-e*x*( 1-((b + yipsilo)*(alpha + b + miu))/(beta*k*yipsilo*(1-e*x)));
+    %R00=e*x*( 1-((b + yipsilo)*(alpha + b + miu))/(beta*k*yipsilo*(1-e*x)));
+    f2=[f2;R00];
+end
+
+f21=f2(ceil(x21));
+f22=f2(ceil(x22));
+
+%加上标志
+M1=ceil(0.5322/0.002):20:(1+0.002)./0.002;
+x1=[x120';x110'];
+a1=x1(M1);
+b1=f1(M1);
+teli1=ceil(0.5322/0.002);
+telix1=x1(teli1);
+teliy1=f1(teli1);
+
+M2=1:20:ceil(0.5322/0.002);
+x2=[x210';x220'];
+a2=x2(M2);
+b2=f2(M2);
+teli2=1;
+telix2=x1(teli2);
+teliy2=f2(teli2);
+
+figure
+subplot(1,2,1)
+plot(telix1,teliy1','-or','markersize',5)  %为了展示legend
+hold on
+plot(telix2,teliy2,'-ob','markersize',5)
+
+hold on
+plot(a1,b1','or','markersize',5) %为了加上圆圈标志
+hold on
+plot(a2,b2,'ob','markersize',5)
+
+hold on %做曲线
+plot(x110,f11,'-r','linewidth',1.5)
+hold on
+plot(x210,f21,'-b','linewidth',1.5)
+hold on
+plot(x120,f12,'--r','linewidth',1) %两条虚线
+hold on
+plot(x220,f22,'--b','linewidth',1)
+
+xx=0.5322*ones(51,1);
+y=0:0.02:1;
+hold on
+plot(xx,y,'--k','linewidth',1)
+
+text(0.3,1,'\it R_0>1','fontname','Times New Roman','fontsize',10)
+text(0.7,1,'\it R_0<1','fontname','Times New Roman','fontsize',10)
+xlabel('(a) \it x(e=0.75)','fontname','Times New Roman','fontsize',10)
+%ylabel('\it R(\infty)','fontname','Times New Roman')
+ylabel('Final  epidemic  size','fontname','Times New Roman','fontsize',10)
+xlim([0,1]);
+ylim([0,1]);
+set(gca,'fontname','Times New Roman','fontsize',10)
+
+subplot(1,2,2)
+e=0.95;
+x110=0.4202:0.002:1;
+x11=ceil(0.4202/0.002)+(x110-0.4202+0.002)./0.002;
+x120=0:0.002:0.4202;
+x12=(x120+0.002)./0.002;
+
+f1=[];
+for x=0:0.002:1
+    zhi=e*x./((b+x*e))-e*x*(1-b./((b+x*e)));
+    %zhi=e*x*(1-b./((b+x*e)));
+    f1=[f1;zhi];
+end
+f1=f1';
+
+f11=f1(ceil(x11));
+f12=f1(ceil(x12));
+
+x210=0:0.002:0.4202;
+x21=(x210+0.002)./0.002;
+x220=0.4202:0.002:1;
+x22=ceil(0.4202/0.002)+(x220-0.4202)./0.002;
+
+f2=[];
+for x=0:0.002:1
+    R00=-(b^4*e*x - b*miu^2*yipsilo^2 - b^2*miu*yipsilo^2 - b^2*miu^2*yipsilo - b^3*miu*yipsilo + 2*alpha*b^3*e*x - alpha*b*miu*yipsilo^2 - alpha*b^2*miu*yipsilo + 2*b^3*e*miu*x + 2*b^3*e*x*yipsilo + alpha^2*b^2*e*x + b^2*e*miu^2*x + alpha^2*e*x*yipsilo^2 + b^2*e*x*yipsilo^2 + 2*alpha*b^2*e*miu*x + b*beta*k*miu*yipsilo^2 + 2*alpha*b*e*x*yipsilo^2 + 4*alpha*b^2*e*x*yipsilo + 2*alpha^2*b*e*x*yipsilo + alpha*e*miu*x*yipsilo^2 + b*e*miu*x*yipsilo^2 + b*e*miu^2*x*yipsilo + 3*b^2*e*miu*x*yipsilo + 3*alpha*b*e*miu*x*yipsilo - b*beta*e*k*miu*x*yipsilo^2)/(b*beta*k*yipsilo*(b + yipsilo)*(e*x - 1)*(alpha + b + miu))-e*x*( 1-((b + yipsilo)*(alpha + b + miu))/(beta*k*yipsilo*(1-e*x)));
+    %R00=e*x*( 1-((b + yipsilo)*(alpha + b + miu))/(beta*k*yipsilo*(1-e*x)));
+    f2=[f2;R00];
+end
+
+f21=f2(ceil(x21));
+f22=f2(ceil(x22));
+
+%加上标志
+M1=ceil(0.4202/0.002):20:(1+0.002)./0.002;
+x1=[x120';x110'];
+a1=x1(M1);
+b1=f1(M1);
+teli1=ceil(0.4202/0.002);
+telix1=x1(teli1);
+teliy1=f1(teli1);
+
+M2=1:20:ceil(0.4202/0.002);
+x2=[x210';x220'];
+a2=x2(M2);
+b2=f2(M2);
+teli2=1;
+telix2=x1(teli2);
+teliy2=f2(teli2);
+
+plot(telix1,teliy1','-or','markersize',5)  %为了展示legend
+hold on
+plot(telix2,teliy2,'-ob','markersize',5)
+
+hold on
+plot(a1,b1','or','markersize',5) %为了加上圆圈标志
+hold on
+plot(a2,b2,'ob','markersize',5)
+
+hold on %做曲线
+plot(x110,f11,'-r','linewidth',1.5)
+hold on
+plot(x210,f21,'-b','linewidth',1.5)
+hold on
+plot(x120,f12,'--r','linewidth',1) %两条虚线
+hold on
+plot(x220,f22,'--b','linewidth',1)
+
+xx=0.4202*ones(51,1);
+y=0:0.02:1;
+hold on
+plot(xx,y,'--k','linewidth',1)
+
+xlabel('(b) \it x(e=0.95)','fontname','Times New Roman','fontsize',10);
+xlim([0,1]);
+ylim([0,1]);
+legend('\it FDE','\it EEP')
+set(gca,'fontname','Times New Roman','fontsize',10)
