@@ -1,0 +1,17 @@
+function y = SIR(t,x)
+    beta=0.8;
+    miu=0.6;
+    k=2;
+    y = [-beta*k*x(2)*x(1);beta*k*x(2)*x(1)-miu*x(2);miu*x(2)];
+end
+
+x0=[0.99;0.01;0];
+[t,x]=ode45('SIR',[0,30],x0)
+x1=x(:,1)
+x2=x(:,2);
+x3=x(:,3);
+figure
+plot(t,x1,'-g',t,x2,'-r',t,x3,'-b')
+xlabel('\it t')
+ylabel('proportion')
+legend('\it S(t)','\it I(t)','\it R(t)')
