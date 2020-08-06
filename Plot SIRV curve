@@ -1,0 +1,38 @@
+%作SEIRV曲线，根据微分方程组
+
+%第一步：编写m文件
+function y = SIRV(t,x)
+    b=0.05;
+    beta=0.15;
+    yipsilo=0.5;
+    alpha=0.002;
+    miu=0.1;
+    N=100;
+    gama=1.8;
+    k=N*(2-gama)/(3-gama);
+    e=0.75;
+    xx=0.1;
+    
+    y=zeros(4,1);
+
+    y(1)=b-beta*k*(1-e*xx)*x(1)*x(3)-xx*e*x(1)-b*x(1);
+    y(2)=beta*k*(1-e*xx)*x(1)*x(3)-yipsilo*x(2)-b*x(2);
+    y(3)=yipsilo*x(2)-(alpha+miu)*x(3)-b*x(3);
+    y(4)=miu*x(3)+xx*e*x(1)-b*x(4);
+end
+
+%第二步：主程序
+clc
+clear all;
+
+x0=[0.99;0.01;0.001;0.001];
+[t,x]=ode45('SIRV',[0,30],x0)
+x1=x(:,1);
+x2=x(:,2);
+x3=x(:,3);
+x4=x(:,4);
+figure
+plot(t,x1,'-g',t,x2,'-r',t,x3,'-b',t,x4,'-y')
+xlabel('\it t')
+ylabel('proportion')
+legend('\it s(t)','\it e(t)','\it i(t)','\it r(t)')
