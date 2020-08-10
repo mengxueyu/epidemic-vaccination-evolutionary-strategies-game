@@ -36,3 +36,242 @@ plot(t,x1,'-g',t,x2,'-r',t,x3,'-b',t,x4,'-y')
 xlabel('\it t')
 ylabel('proportion')
 legend('\it s(t)','\it e(t)','\it i(t)','\it r(t)')
+
+%第三步：作图
+clc
+clear all;
+
+t1=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点1 有效率0点1.xlsx');  %时间
+s11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点1 有效率0点1.xlsx');  %易感者 s
+i11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点1 有效率0点1.xlsx');  %感染者 i
+d11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点1 有效率0点1.xlsx');  %死亡者 d
+v11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点1 有效率0点1.xlsx');  %疫苗接种者 v
+
+t2=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点1 有效率0点25.xlsx');  %时间
+s125 = xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点1 有效率0点25.xlsx');  %易感者 s
+i125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点1 有效率0点25.xlsx');  %感染者 i
+d125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点1 有效率0点25.xlsx');  %死亡者 d
+v125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点1 有效率0点25.xlsx');  %疫苗接种者 v
+
+t3=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点1 有效率0点5.xlsx');  %时间
+s15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点1 有效率0点5.xlsx');  %易感者 s
+i15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点1 有效率0点5.xlsx');  %感染者 i
+d15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点1 有效率0点5.xlsx');  %死亡者 d
+v15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点1 有效率0点5.xlsx');  %疫苗接种者 v
+
+t4=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点1 有效率0点75.xlsx');  %时间
+s175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点1 有效率0点75.xlsx');  %易感者 s
+i175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点1 有效率0点75.xlsx');  %感染者 i
+d175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点1 有效率0点75.xlsx');  %死亡者 d
+v175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点1 有效率0点75.xlsx');  %疫苗接种者 v
+
+t5=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点1 有效率0点9.xlsx');  %时间
+s19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点1 有效率0点9.xlsx');  %易感者 s
+i19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点1 有效率0点9.xlsx');  %感染者 i
+d19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点1 有效率0点9.xlsx');  %死亡者 d
+v19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点1 有效率0点9.xlsx');  %疫苗接种者 v
+
+bj=2;x0=1:8:130;
+
+figure()
+subplot(1,3,1)
+plot(t1(bj),s11(bj),'-^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(bj),s125(bj),'-vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(bj),s15(bj),'-ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(bj),s175(bj),'-dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(bj),s19(bj),'-sm','markerfacecolor','m','markersize',3);
+hold on;plot(t1(x0),s11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),s125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),s15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),s175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),s19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,s11,'-r',t2,s125,'-g',t3,s15,'-b',t4,s175,'-k',t5,s19,'-m','linewidth',0.6);
+xlabel('(a) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it s}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,35]);legend('{\it e}=0.1','{\it e}=0.25','{\it e}=0.5','{\it e}=0.75','{\ite}=0.9');
+set(gca,'xtick',[0:5:35],'ytick',[0:0.2:1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,2)
+hold on;plot(t1(x0),i11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),i125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),i15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),i175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),i19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,i11,'-r',t2,i125,'-g',t3,i15,'-b',t4,i175,'-k',t5,i19,'-m','linewidth',0.6)  
+xlabel('(b) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it i}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,45]);set(gca,'xtick',[0:5:45],'ytick',[0:0.2:1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,3)
+hold on;plot(t1(x0),v11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),v125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),v15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),v175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),v19(x0),'sm','markerfacecolor','m','markersize',3); 
+plot(t1,v11,'-r',t2,v125,'-g',t3,v15,'-b',t4,v175,'-k',t5,v19,'-m','linewidth',0.6)  
+xlabel('(c) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it v}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,40]);set(gca,'xtick',[0:5:45],'ytick',[0:0.02:0.1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+%作疫苗接种率为0.4，有效率不同的曲线
+clc
+clear all;
+
+t1=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点4 有效率0点1.xlsx');  %时间
+s11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点4 有效率0点1.xlsx');  %易感者 s
+i11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点4 有效率0点1.xlsx');  %感染者 i
+d11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点4 有效率0点1.xlsx');  %死亡者 d
+v11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点4 有效率0点1.xlsx');  %疫苗接种者 v
+
+t2=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点4 有效率0点25.xlsx');  %时间
+s125 = xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点4 有效率0点25.xlsx');  %易感者 s
+i125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点4 有效率0点25.xlsx');  %感染者 i
+d125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点4 有效率0点25.xlsx');  %死亡者 d
+v125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点4 有效率0点25.xlsx');  %疫苗接种者 v
+
+t3=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点4 有效率0点5.xlsx');  %时间
+s15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点4 有效率0点5.xlsx');  %易感者 s
+i15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点4 有效率0点5.xlsx');  %感染者 i
+d15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点4 有效率0点5.xlsx');  %死亡者 d
+v15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点4 有效率0点5.xlsx');  %疫苗接种者 v
+
+t4=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点4 有效率0点75.xlsx');  %时间
+s175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点4 有效率0点75.xlsx');  %易感者 s
+i175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点4 有效率0点75.xlsx');  %感染者 i
+d175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点4 有效率0点75.xlsx');  %死亡者 d
+v175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点4 有效率0点75.xlsx');  %疫苗接种者 v
+
+t5=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点4 有效率0点9.xlsx');  %时间
+s19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点4 有效率0点9.xlsx');  %易感者 s
+i19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点4 有效率0点9.xlsx');  %感染者 i
+d19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点4 有效率0点9.xlsx');  %死亡者 d
+v19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点4 有效率0点9.xlsx');  %疫苗接种者 v
+
+bj=2;x0=1:10:330;
+
+figure()
+subplot(1,3,1)
+plot(t1(bj),s11(bj),'-^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(bj),s125(bj),'-vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(bj),s15(bj),'-ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(bj),s175(bj),'-dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(bj),s19(bj),'-sm','markerfacecolor','m','markersize',3);
+hold on;plot(t1(x0),s11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),s125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),s15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),s175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),s19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,s11,'-r',t2,s125,'-g',t3,s15,'-b',t4,s175,'-k',t5,s19,'-m','linewidth',0.6);
+xlabel('(a) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it s}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,60]);legend('{\it e}=0.1','{\it e}=0.25','{\it e}=0.5','{\it e}=0.75','{\ite}=0.9');
+set(gca,'xtick',[0:10:60],'ytick',[0:0.2:1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,2)
+hold on;plot(t1(x0),i11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),i125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),i15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),i175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),i19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,i11,'-r',t2,i125,'-g',t3,i15,'-b',t4,i175,'-k',t5,i19,'-m','linewidth',0.6)  
+xlabel('(b) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it i}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,200]);set(gca,'xtick',[0:20:200],'ytick',[0:0.1:1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,3)
+hold on;plot(t1(x0),v11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),v125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),v15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),v175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),v19(x0),'sm','markerfacecolor','m','markersize',3); 
+plot(t1,v11,'-r',t2,v125,'-g',t3,v15,'-b',t4,v175,'-k',t5,v19,'-m','linewidth',0.6)  
+xlabel('(c) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it v}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,60]);set(gca,'xtick',[0:10:60],'ytick',[0:0.1:0.4],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+%无病均衡点
+clc
+clear all;
+
+t1=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点8 有效率0点6.xlsx');  %时间
+s11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点8 有效率0点6.xlsx');  %易感者 s
+i11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点8 有效率0点6.xlsx');  %感染者 i
+d11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点8 有效率0点6.xlsx');  %死亡者 d
+v11=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点8 有效率0点6.xlsx');  %疫苗接种者 v
+
+t2=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点8 有效率0点7.xlsx');  %时间
+s125 = xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点8 有效率0点7.xlsx');  %易感者 s
+i125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点8 有效率0点7.xlsx');  %感染者 i
+d125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点8 有效率0点7.xlsx');  %死亡者 d
+v125=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点8 有效率0点7.xlsx');  %疫苗接种者 v
+
+t3=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点8 有效率0点8.xlsx');  %时间
+s15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点8 有效率0点8.xlsx');  %易感者 s
+i15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点8 有效率0点8.xlsx');  %感染者 i
+d15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点8 有效率0点8.xlsx');  %死亡者 d
+v15=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点8 有效率0点8.xlsx');  %疫苗接种者 v
+
+t4=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点8 有效率0点9.xlsx');  %时间
+s175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点8 有效率0点9.xlsx');  %易感者 s
+i175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点8 有效率0点9.xlsx');  %感染者 i
+d175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点8 有效率0点9.xlsx');  %死亡者 d
+v175=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点8 有效率0点9.xlsx');  %疫苗接种者 v
+
+t5=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\时间t_x为0点8 有效率0点95.xlsx');  %时间
+s19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\易感者曲线_x为0点8 有效率0点95.xlsx');  %易感者 s
+i19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\感染者曲线_x为0点8 有效率0点95.xlsx');  %感染者 i
+d19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\死亡者_x为0点8 有效率0点95.xlsx');  %死亡者 d
+v19=xlsread('E:\自己的论文\传染病疫苗接种策略\数据\接种疫苗者_x为0点8 有效率0点95.xlsx');  %疫苗接种者 v
+
+bj=2;x0=1:10:200;
+
+figure()
+subplot(1,3,1)
+plot(t1(bj),s11(bj),'-^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(bj),s125(bj),'-vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(bj),s15(bj),'-ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(bj),s175(bj),'-dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(bj),s19(bj),'-sm','markerfacecolor','m','markersize',3);
+hold on;plot(t1(x0),s11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),s125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),s15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),s175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),s19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,s11,'-r',t2,s125,'-g',t3,s15,'-b',t4,s175,'-k',t5,s19,'-m','linewidth',0.6);
+xlabel('(a) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it s}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,24]);
+legend('{\it e}=0.6','{\it e}=0.7','{\it e}=0.8','{\it e}=0.9','{\ite}=0.95');
+set(gca,'xtick',[0:4:24],'ytick',[0:0.2:1],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,2)
+hold on;plot(t1(x0),i11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),i125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),i15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),i175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),i19(x0),'sm','markerfacecolor','m','markersize',3); 
+hold on;plot(t1,i11,'-r',t2,i125,'-g',t3,i15,'-b',t4,i175,'-k',t5,i19,'-m','linewidth',0.6)  
+xlabel('(b) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it i}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,160]);ylim([0,0.0015]);
+set(gca,'xtick',[0:20:160],'ytick',[0:0.0003:0.0015],'fontsize',12,'fontname','Times New Roman');
+box on;
+
+subplot(1,3,3)
+hold on;plot(t1(x0),v11(x0),'^r','markerfacecolor','r','markersize',3);
+hold on;plot(t2(x0),v125(x0),'vg','markerfacecolor','g','markersize',3);
+hold on;plot(t3(x0),v15(x0),'ob','markerfacecolor','b','markersize',3);
+hold on;plot(t4(x0),v175(x0),'dk','markerfacecolor','k','markersize',3);
+hold on;plot(t5(x0),v19(x0),'sm','markerfacecolor','m','markersize',3); 
+plot(t1,v11,'-r',t2,v125,'-g',t3,v15,'-b',t4,v175,'-k',t5,v19,'-m','linewidth',0.6)  
+xlabel('(c) \it t','fontname','Times New Roman','fontsize',12);
+ylabel('{\it v}({\itt})','fontname','Times New Roman','fontsize',12)
+xlim([0,24]);set(gca,'xtick',[0:4:24],'ytick',[0:0.1:1],'fontsize',12,'fontname','Times New Roman');
+box on;
