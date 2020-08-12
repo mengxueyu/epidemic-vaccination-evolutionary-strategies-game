@@ -1,0 +1,37 @@
+%费米规则
+%tanh()函数
+clc
+clear all;
+x=-1:0.02:1;
+y1=tanh(-1/2.*x); 
+y2=1./(1+exp(x))-1./(1+exp(-x));
+%y3=-1/2*x+1/24*x.^3-1/240*x.^5;
+y3=-1/2*x;
+figure()
+plot(x,y1,'-r',x,y2,'-b',x,y3,'-g')
+legend('tanh(-1/2*x)','1./(1+exp(x))-1./(1+exp(-x))','-1/2*x+1/24*x.^3-1/240*x.^5')
+figure
+plot(x,y1,'-r')
+
+%求x动力学方程
+clc
+clear all;
+syms x f e Cv Ci d kapa
+pay11=-Cv; pay12=-Cv-(1-d)*Ci;
+pay21=0; pay22=-Ci;
+pro11=[e+(1-e)*(1-f)]*x; pro12=(1-e)*f*x;
+pro21=(1-x)*(1-f);  pro22=(1-x)*f;
+
+dxdt0=pro11*pro21*tanh([-kapa/2*(pay11-pay21)])+pro11*pro22*tanh([-kapa/2*(pay11-pay22)])+...
+    pro12*pro21*tanh([-kapa/2*(pay12-pay21)])+pro12*pro22*tanh([-kapa/2*(pay12-pay22)]);
+dxdt=simplify(dxdt0)
+pretty(dxdt)
+
+%泰勒展开
+dxdt1=pro11*pro21*([-kapa/2*(pay11-pay21)])+pro11*pro22*([-kapa/2*(pay11-pay22)])+...
+    pro12*pro21*([-kapa/2*(pay12-pay21)])+pro12*pro22*([-kapa/2*(pay12-pay22)]);
+dxdt11=simplify(dxdt1)
+pretty(dxdt11)
+
+fstar=solve(dxdt11/(x*(1-x)),'f')
+pretty(fstar)
