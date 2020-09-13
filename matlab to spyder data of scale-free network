@@ -1,0 +1,45 @@
+degree=[]; strategies=[]; yanse=[];
+for i =1 : nums 
+    degree=[degree;Ent(i).connums];  %度数列表，用于节点大小和连边颜色表示
+    
+    strategy=Ent(i).state;
+    if strategy==[1,0,0,0,0]
+        strategies=[strategies;1]; %1表示易感态,黄色表示表示 y
+    else
+        if strategy==[0,1,0,0,0]
+            strategies=[strategies;2]; %2表示潜伏态，表示 m
+        else
+            if strategy==[0,0,1,0,0]
+                strategies=[strategies;3]; %3表示感染态，红色表示 r
+            else
+                if strategy==[0,0,0,1,0]
+                    strategies=[strategies;4]; %4表示移出态，蓝色表示 b
+                else
+                    if strategy==[1,1,1,1,1]
+                        strategies=[strategies;5]; %5表示有效疫苗接种，绿色表示 g
+                    else
+                        if strategy==[0,0,0,0,0]
+                            strategies=[strategies;6]; %6表示死亡者，黑色表示 k
+                        else
+                            if strategy==[0,0,0,0,1]
+                                strategies=[strategies;5]; %5表示疫苗接种
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+strategies=strategies';
+
+edge=[];
+for i=1:nums
+    for j=1:Ent(i).connums
+        edge=[edge;[i,Ent(i).con(j)]];
+    end
+end
+
+strategies=strategies';
+xlswrite('C:\Users\mengxueyu\Desktop\300复杂网络连边数据.xlsx',edge)
+xlswrite('C:\Users\mengxueyu\Desktop\300复杂网络状态30.xlsx',strategies)
